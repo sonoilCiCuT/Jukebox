@@ -292,3 +292,12 @@ INSERT INTO album_genere (album_id, genere_id) VALUES
 (37,3), (37, 26), (37, 27), 
 (38,3), (38, 26), (38, 27);
 
+
+create table secret(
+    secret_id int auto_increment primary key,
+    client_id varchar(255) not null ,
+    client_secret varchar(255) not null,
+);
+
+insert into secret(client_id, client_secret) values
+('b5c068cb7f364b55a76682d01da7423b',"2819eae2e82643f19a76d82513fb0c27");
