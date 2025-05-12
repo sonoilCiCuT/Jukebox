@@ -1,0 +1,391 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+@font-face {
+    font-family: "docallisme";
+    src: url("http://localhost/jukebox/docallisme/docallismeonstreet.otf") format("truetype");
+}
+
+:root{
+    --background-color: #1a1a1a;
+    --text-color: #ffffff;
+    --nav-height: 8rem;
+    --color: #0080ff;
+}
+body{
+    display: grid;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: 'Inter', sans-serif;
+    padding: calc(var(--nav-height)*1.5) 0;
+}
+
+.album-container,.artista-container{
+    display: grid;
+    grid-template-columns: repeat(3, 25%);
+    justify-content: space-evenly;
+}   
+
+.album,.artista{
+    width: 100%;
+    justify-self: center;
+    align-self: center;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 10% 0;
+    background-color: rgba(100, 100, 100, 0.2);
+    padding: 10% .1rem;
+    border-radius: 1rem;
+    transition: all 0.3s ease;
+    color: var(--text-color);
+    text-decoration: none;
+    box-shadow: 0 0 10px #101010;
+}
+
+.album:hover,.artista:hover{
+    cursor: pointer;
+    background-color: rgba(100, 100, 100, 0.5);
+    box-shadow: 0 0 30px var(--color);
+}
+
+.album:hover > img, .artista:hover > img{
+    transform: scale(1.05);
+}
+
+.album>img,.artista>img{
+    width: 80%;
+    margin-bottom: 10% ;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 1);
+    transition: all 0.3s ease;
+}
+
+.artista>img{
+    object-fit: cover;
+    width: 20vw;
+    height: 20vw;
+    border-radius: 50%;
+}
+
+.album>h2,.artista>h2{
+    margin:2.5%;
+    font-size: 150%     
+}
+.album>.artist{
+    margin:2.5%;
+    font-size: 130%;
+}
+.album>.genere{
+    margin:2.5%;
+    font-size: 100%;
+}
+.album>.artist>.anno{
+    font-size: 85%;
+}
+
+.search-filter{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 70% 10%;
+    justify-content: center;
+}
+
+#search{
+    width: 100%;
+    height: 3rem;
+    border-radius: 1rem;
+    padding: 0.5rem 1rem;
+    border: none;
+    background-color: rgba(100, 100, 100, 0.2);
+    color: var(--text-color);
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    justify-self: start;
+    transition: all 0.3s ease;
+}
+
+#search::placeholder{
+    color: var(--color);
+}
+
+#search:hover{
+    background-color: rgba(100, 100, 100, 0.5);
+    box-shadow: 0 0 20px var(--color);
+}
+
+#filter{
+    justify-self: end;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 1rem;    
+    padding: 0.5rem;
+    border: none;
+    background-color: rgba(100, 100, 100, 0.2);
+    color: var(--text-color);
+    stroke: var(--color);
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+}
+
+#filter:hover{
+    background-color: rgba(100, 100, 100, 0.5);
+    box-shadow: 0 0 20px var(--color);
+    cursor: pointer;
+}
+
+.nav{
+    z-index: 1000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--nav-height);
+    background-color: rgba(60, 60, 60, 0.98 );
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 1);
+}
+
+.nav>.logo>svg:hover{
+    cursor: pointer;
+    transform: scale(1.2);
+}
+
+.logo, .jukebox{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: max-content;
+    margin-left: 2rem;
+}
+
+.title{
+    margin: 0;
+    justify-self: center;
+}
+
+.logo{
+    width: 9rem;
+    justify-content: left;
+}
+
+.logo>svg{
+    width: 4rem;
+    height: 4rem;
+    /*filter: invert(100%) grayscale(100%);*/
+    transition: all 0.3s ease;
+    stroke: var(--color);
+}
+
+.title>h1{
+    font-family: 'docallisme', sans-serif;
+    font-size: 5rem;
+    color: var(--color);
+    display: inline-block;
+
+}
+
+.login{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: max-content;
+    margin-right: 2rem;
+}
+
+.login>a{
+    
+    background-color: rgba(132, 132, 132, 0);
+    padding:.5rem;
+    border-radius: 50%;
+    width:3rem;
+    height:3rem;
+    border: 3px solid var(--color);
+    transition: all 0.3s ease;
+}
+
+.carrello{
+    margin-right: 1rem;
+}
+
+.login>a>svg{
+    width: 3rem;
+    height: 3rem;
+    stroke: var(--color);
+}
+
+.login>a:hover{
+    transform: scale(1.2);
+}
+
+#filter-menu{
+    z-index: 900;
+    position: fixed;
+    top: var(--nav-height);
+    right: -50%;
+    width: 20vw;
+    padding: 0 2.5%;
+    height: calc(100vh - var(--nav-height));
+    background-color: rgba(80, 80, 80, 0.98);
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 1);
+    transition: all 0.3s ease;
+}
+
+#filter-menu>form{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    row-gap: 2rem;
+}
+
+#filter-menu>form>button{
+    background-color: rgba(40, 40, 40, 0.6);
+    border-radius: 1rem;
+    border: none;
+    padding: 0.5rem;
+    font-size: 160%;
+    color: var(--text-color);
+    transition: all 0.3s ease;
+    
+}
+
+#filter-menu>form>input{
+    font-size: 160%;
+    transition: all 0.3s ease;
+    background-color: rgba(40, 40, 40, 0.6);
+    color: var(--text-color);
+    border: none;
+    border-radius: 1rem;
+    padding: 0.5rem;
+    
+}
+
+#filter-menu>form>input:hover{
+    background-color: rgba(100, 100, 100, 0.5);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+#filter-menu>form>input::placeholder{
+    color: var(--color);
+}
+
+#filter-menu>form>button:hover{
+    background-color: rgba(40, 40, 40, 0.8);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+.blank{
+    width: 7.9rem;
+    background-color: rgba(0,0,0,0);
+    margin-right: 2rem;
+}
+
+.show-album{
+    display: grid;
+    justify-content: center;
+}
+
+.details{
+    display: grid;
+    grid-template-columns: 25vw 65vw;
+    justify-content: start;
+    align-items: end;
+}
+
+.details>img{
+    width:100%;
+    box-shadow: 0 0 10px #101010;
+}
+
+.details>div{
+
+    width: 80%;
+    justify-self: center;
+    justify-content: center;
+}
+
+.details>div>h1{
+    font-size: 250%;
+    margin: 0;
+    font-weight: 800;
+}
+
+.details>div>h2{
+    font-size: 120%;
+}
+
+.details>div>h2>a{
+    font-size: 140%;
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+.song-list{
+    margin-top: 3vh;
+    display: grid;
+    grid-template-columns: 100%;
+}
+
+.song-list>div{
+    border-radius: 1rem;
+    font-size: 160%;
+    margin: 1vh;
+    width: 50%;
+    padding:3vh 10%;
+    justify-self: center;
+    font-weight: 600;
+    background-color: #ffffff06;
+    transition: all .15s ease;
+    box-shadow: 0 0 10px #101010;
+}
+
+.song-list>div:hover{
+    background-color: #ffffff1d ;
+    box-shadow: 0 0 20px var(--color);
+}
+
+.song-list>div>span{
+    width:2.5vw;
+    display: inline-block;
+}
+
+
+@media (max-width: 1000px) {
+    .album-container,.artista-container{
+        grid-template-columns: repeat(2, 40%);
+    }
+    .artista>img{
+        width: 35vw;
+        height: 35vw;
+    }
+    .search-filter{
+        grid-template-columns: 60vw 10vw;
+        width: 100%;
+        justify-content: space-around;
+        justify-self: center;
+    }
+}
+
+@media (max-width: 600px) {
+    .album-container,.artista-container{
+        grid-template-columns: repeat(1, 90%);
+    }
+    .artista>img{
+        width: 80vw;
+        height: 80vw;
+    }
+    .nav>.title{
+        display: none;
+    }
+    .search-filter{
+        width: 100%;
+        grid-template-columns: 60vw 10vw;
+        justify-content: space-around;
+    }
+}
