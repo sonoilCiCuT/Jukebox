@@ -82,7 +82,6 @@ create table acquisti(
     primary key (utente_id, playlist_id)
 );
 
------------------------------------------------------------------------------------------------------
 
 INSERT INTO utente (nome, cognome, email, password, username) VALUES
 ('Mario', 'Rossi', 'mario.rossi@email.com', 'password123', 'mariorossi'),
@@ -95,34 +94,34 @@ INSERT INTO utente (nome, cognome, email, password, username) VALUES
 ('Sofia', 'Rosa', 'sofia.rosa@email.com', 'sofiapass', 'sofiarosa');
 
 INSERT INTO artista (nome,url) VALUES
-('The Beatles','https://10.0.0.9/~quintaib15/ab67616100005174e9348cc01ff5d55971b22433.jpeg'),
-('Pink Floyd', 'https://10.0.0.9/~quintaib15/f0a39a8a196a87a7236bdcf8a8708f6d5d3547cc.jpeg'),
-('Led Zeppelin','https://10.0.0.9/~quintaib15/b0248a44865493e6a03832aa89854ada16ff07a8.jpeg'),
-('Queen','https://10.0.0.9/~quintaib15/c06971e9ff81696699b829484e3be165f4e64368.jpeg'),
-('David Bowie','https://10.0.0.9/~quintaib15/ab67616100005174b78f77c5583ae99472dd4a49.jpeg'),
-('Radiohead','https://10.0.0.9/~quintaib15/ab67616100005174a03696716c9ee605006047fd.jpeg'),
-('Miles Davis','https://10.0.0.9/~quintaib15/8496e6ea230dd47311d85dcf860015792f5ada42.jpeg'),
-('John Coltrane','https://10.0.0.9/~quintaib15/ab6761610000517473c7f7505c1af82929ec41df.jpeg'),
-('Kendrick Lamar','https://10.0.0.9/~quintaib15/ab6761610000517439ba6dcd4355c03de0b50918.jpeg'),
-('Daft Punk','https://10.0.0.9/~quintaib15/ab67616100005174dc93bb227980211b325b9d70.jpeg'),
-('Nirvana','https://10.0.0.9/~quintaib15/42ae0f180f16e2f21c1f2212717fc436f5b95451.jpeg'),
-('Amy Winehouse','https://10.0.0.9/~quintaib15/ab676161000051742ceb023b10da17590878e88c.jpeg'),
-('Arctic Monkeys','https://10.0.0.9/~quintaib15/ab676161000051747da39dea0a72f581535fb11f.jpeg'),
-('The Rolling Stones','https://10.0.0.9/~quintaib15/ab67616100005174e4cea917b68726aadb4854b8.jpeg'),
-('Bob Marley', 'https://10.0.0.9/~quintaib15/02fd758d9805ef44d1caafc35ff17a47f9dff098.jpeg'),
-('Michael Jackson', 'https://10.0.0.9/~quintaib15/ab67616100005174997cc9a4aec335d46c9481fd.jpeg'),
-('Madonna', 'https://10.0.0.9/~quintaib15/ab676161000051746ccc1215f5b205aa6b34b48b.jpeg'),
-('The Weeknd', 'https://10.0.0.9/~quintaib15/ab676161000051749e528993a2820267b97f6aae.jpeg'),
-('Billie Eilish', 'https://10.0.0.9/~quintaib15/ab676161000051744a21b4760d2ecb7b0dcdc8da.jpeg'),
-('Eminem', 'https://10.0.0.9/~quintaib15/ab67616100005174a00b11c129b27a88fc72f36b.jpeg'),
-('Tame Impala', 'https://10.0.0.9/~quintaib15/ab6761610000517490357ef28b3a012a1d1b2fa2.jpeg'),
-('Fleetwood Mac', 'https://10.0.0.9/~quintaib15/ab67616100005174c8752dd511cda8c31e9daee8.jpeg'),
-('Jimi Hendrix', 'https://10.0.0.9/~quintaib15/ab6761610000517431f6ab67e6025de876475814.jpeg'),
-('Aretha Franklin', 'https://10.0.0.9/~quintaib15/ab67616100005174f12270128127ba170f90097d.jpeg'),
-('Frank Ocean', 'https://10.0.0.9/~quintaib15/ab67616100005174ee3123e593174208f9754fab.jpeg'),
-('Dio', 'https://10.0.0.9/~quintaib15/ab67616100005174555c8199ba80168cfeafdfbc.jpeg'),
-('Rainbow', 'https://10.0.0.9/~quintaib15/402ab270e0754615887a261047f7db4596c1ffda.jpeg'),
-('Black Sabbath', 'https://10.0.0.9/~quintaib15/ab676161000051744870cd833ebe1092601820c3.jpeg');
+('The Beatles','../foto/ab67616100005174e9348cc01ff5d55971b22433.jpeg'),
+('Pink Floyd', '../foto/f0a39a8a196a87a7236bdcf8a8708f6d5d3547cc.jpeg'),
+('Led Zeppelin','../foto/b0248a44865493e6a03832aa89854ada16ff07a8.jpeg'),
+('Queen','../foto/c06971e9ff81696699b829484e3be165f4e64368.jpeg'),
+('David Bowie','../foto/ab67616100005174b78f77c5583ae99472dd4a49.jpeg'),
+('Radiohead','../foto/ab67616100005174a03696716c9ee605006047fd.jpeg'),
+('Miles Davis','../foto/8496e6ea230dd47311d85dcf860015792f5ada42.jpeg'),
+('John Coltrane','../foto/ab6761610000517473c7f7505c1af82929ec41df.jpeg'),
+('Kendrick Lamar','../foto/ab6761610000517439ba6dcd4355c03de0b50918.jpeg'),
+('Daft Punk','../foto/ab67616100005174dc93bb227980211b325b9d70.jpeg'),
+('Nirvana','../foto/42ae0f180f16e2f21c1f2212717fc436f5b95451.jpeg'),
+('Amy Winehouse','../foto/ab676161000051742ceb023b10da17590878e88c.jpeg'),
+('Arctic Monkeys','../foto/ab676161000051747da39dea0a72f581535fb11f.jpeg'),
+('The Rolling Stones','../foto/ab67616100005174e4cea917b68726aadb4854b8.jpeg'),
+('Bob Marley', '../foto/02fd758d9805ef44d1caafc35ff17a47f9dff098.jpeg'),
+('Michael Jackson', '../foto/ab67616100005174997cc9a4aec335d46c9481fd.jpeg'),
+('Madonna', '../foto/ab676161000051746ccc1215f5b205aa6b34b48b.jpeg'),
+('The Weeknd', '../foto/ab676161000051749e528993a2820267b97f6aae.jpeg'),
+('Billie Eilish', '../foto/ab676161000051744a21b4760d2ecb7b0dcdc8da.jpeg'),
+('Eminem', '../foto/ab67616100005174a00b11c129b27a88fc72f36b.jpeg'),
+('Tame Impala', '../foto/ab6761610000517490357ef28b3a012a1d1b2fa2.jpeg'),
+('Fleetwood Mac', '../foto/ab67616100005174c8752dd511cda8c31e9daee8.jpeg'),
+('Jimi Hendrix', '../foto/ab6761610000517431f6ab67e6025de876475814.jpeg'),
+('Aretha Franklin', '../foto/ab67616100005174f12270128127ba170f90097d.jpeg'),
+('Frank Ocean', '../foto/ab67616100005174ee3123e593174208f9754fab.jpeg'),
+('Dio', '../foto/ab67616100005174555c8199ba80168cfeafdfbc.jpeg'),
+('Rainbow', '../foto/402ab270e0754615887a261047f7db4596c1ffda.jpeg'),
+('Black Sabbath', '../foto/ab676161000051744870cd833ebe1092601820c3.jpeg');
 
 INSERT INTO genere (nome) VALUES
 ('Rock'),
@@ -160,10 +159,10 @@ INSERT INTO album (titolo, anno, url) VALUES
 ('Led Zeppelin IV', 1971, "https://m.media-amazon.com/images/I/81x364UAGAL._UF1000,1000_QL80_.jpg"),
 ('A Night at the Opera', 1975, "https://m.media-amazon.com/images/I/71nxRqKGA8L._UF1000,1000_QL80_.jpg"),
 ('The Rise and Fall of Ziggy Stardust', 1972, "https://www.emp-online.it/dw/image/v2/BBQV_PRD/on/demandware.static/-/Sites-master-emp/default/dw09e23216/images/4/9/9/0/499041a.jpg?sfrm=png"),
-('OK Computer', 1997, "https://10.0.0.9/~quintaib15/ab67616d0000b273c8b444df094279e70d0ed856"),
+('OK Computer', 1997, "https://m.media-amazon.com/images/I/71qtTEW46SL._UF1000,1000_QL80_.jpg"),
 ('Kind of Blue', 1959, "https://m.media-amazon.com/images/I/71UUU3OLX2L.jpg"),
 ('A Love Supreme', 1965, "https://www.segnalisonori.it/wp-content/uploads/2024/11/A-Love-supreme-298x300.jpg"),
-('To Pimp a Butterfly', 2015, "https://10.0.0.9/~quintaib15/ab67616d0000b273cdb645498cd3d8a2db4d05e1"),
+('To Pimp a Butterfly', 2015, "https://m.media-amazon.com/images/I/81VcA8-kuZL._UF1000,1000_QL80_.jpg"),
 ('Random Access Memories', 2013, "https://www.lafeltrinelli.it/images/0888837168618_0_0_536_0_75.jpg"),
 ('Nevermind', 1991, "https://m.media-amazon.com/images/I/71DQrKpImPL._UF1000,1000_QL80_.jpg"),
 ('Back to Black', 2006, "https://m.media-amazon.com/images/I/71Y55FU5VGL._UF1000,1000_QL80_.jpg"),
@@ -179,7 +178,7 @@ INSERT INTO album (titolo, anno, url) VALUES
 ('Rumours', 1977, "https://m.media-amazon.com/images/I/71BekDJBb3L.jpg"),
 ('Are You Experienced', 1967, "https://upload.wikimedia.org/wikipedia/commons/3/33/Are_You_Experienced_-_US_cover-edit.jpg"),
 ('I Never Loved a Man...', 1967, "https://m.media-amazon.com/images/I/81Ez8-3qQaL._UF1000,1000_QL80_.jpg"),
-('Blonde', 2016, "https://10.0.0.9/~quintaib15/ab67616d0000b273c5649add07ed3720be9d5526"),
+('Blonde', 2016, "https://images.rockol.it/TRtPnbFUhAI0KrepgMGQaOrYuHs=/1200x1200/smart/rockol-img/img/foto/upload/blonde-frank-ocean-cover-1471858660.jpg"),
 ('Holy Diver', 1983, "https://www.emp-online.it/dw/image/v2/BBQV_PRD/on/demandware.static/-/Sites-master-emp/default/dw12b64f28/images/4/0/0/1/400152.jpg?sw=1000&sh=800&sm=fit&sfrm=png"),
 ('The Last in Line', 1984, "https://m.media-amazon.com/images/I/71DkaIXGhEL._UF1000,1000_QL80_.jpg"),
 ('Rainbow Rising', 1976, "https://m.media-amazon.com/images/I/71D-MeVXnML.jpg"),  -- Supponendo che Rainbow sia artista_id 5 (verifica)
@@ -296,7 +295,7 @@ INSERT INTO album_genere (album_id, genere_id) VALUES
 create table secret(
     secret_id int auto_increment primary key,
     client_id varchar(255) not null ,
-    client_secret varchar(255) not null,
+    client_secret varchar(255) not null
 );
 
 insert into secret(client_id, client_secret) values
