@@ -16,6 +16,36 @@
             echo $e->getMessage();
         }
     }
+    
+    if (isset($_POST['nome']) && isset($_POST['cognome']) && isset($_POST['email']) && isset($_POST['user']) && isset($_POST['pwd'])) {
+        $nome = $_POST['nome'];
+        $cognome = $_POST['cognome'];
+        $Email = $_POST['email'];
+        $username = $_POST['user'];
+        $password = $_POST['pwd'];
+        $conn = new mysqli("localhost", "php", "password", "jukebox");
+        if ($conn->connect_error) die("Connessione fallita: " . $conn->connect_error);
+        $query = "SELECT * FROM utente WHERE email = ? OR username = ?";
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param("ss", $Email, $username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if ($result->num_rows > 0) echo "Errore: email o username già registrati.";
+        else {
+            $sql= "INSERT INTO utente (nome, cognome, email, password, username) VALUES (?, ?, ?, ?, ?)";
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("sssss", $nome, $cognome, $Email, $password, $username);
+            if ($stmt->execute()) {
+                session_start();
+                $_SESSION["username"] = $username;
+                header("location: ./");
+            }
+            else echo "Errore durante la registrazione: " . $stmt->error;
+            $stmt->close();
+        }
+        $stmt->close();
+        $conn->close();
+    }
 ?>
 
 <!DOCTYPE html>
@@ -23,7 +53,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="register.css">
     <style>
         form{
             width: 40vw;
