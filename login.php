@@ -5,7 +5,8 @@
         if(str_contains($user,"@")) $email = true;
         $pwd = $_POST["pwd"];
         try{
-            $db = new mysqli("10.0.0.9", "quintaib15", "bcIvr01", "quintaib15_jukebox");
+            //$db = new mysqli("10.0.0.9", "quintaib15", "bcIvr01", "quintaib15_jukebox");
+            $db = new mysqli("localhost", "php", "password", "jukebox");
             if($email) $res = $db->query("Select username from utente where email like '$user'");
             else $res = $db->query("Select email from utente where username like '$user'");
             if($res->num_rows>0){
@@ -25,6 +26,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="login.css">
+    <script src="./script.js"></script>
     <title>Accedi</title>
 </head>
 <body>

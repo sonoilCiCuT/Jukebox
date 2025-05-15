@@ -13,7 +13,7 @@
     <script src="script.js"></script>
 
 </head>
-<body>
+<body onload="setColor()">
     <?php include_once("nav.php"); ?>
     <div class="home-grid">
         <a href="artisti" class="album">

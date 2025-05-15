@@ -1,4 +1,5 @@
-@import url("http://10.0.0.9/~quintaib10/Jukebox/jukebox.css");
+/*@import url("http://10.0.0.9/~quintaib10/Jukebox/jukebox.css");*/
+@import url("./jukebox.css");
 
 body{
     display: flex;

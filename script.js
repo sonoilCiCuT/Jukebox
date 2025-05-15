@@ -3,13 +3,32 @@ document.addEventListener("click", function(event) {
     const filter = document.getElementById("filter-menu");
     const search = document.getElementById("search");
     const links_menu = document.getElementById("links-menu");
-    if (!filter.contains(event.target) && !search.contains(event.target)) {
-        filter.style.right = "-50%";
-    }
     if (!links_menu.contains(event.target)) {
         links_menu.style.left = "-50%";
     }
+    if (!filter.contains(event.target) && !search.contains(event.target)) {
+        filter.style.right = "-50%";
+    }
 });
+
+var color = null;
+
+function setColor(){
+    if(color != null){
+        color = "";
+        for(let i = 0; i < 6; i++){
+            r = Math.random() * 16;
+            if(r < 10){
+                r = Math.floor(r);
+                color += r.toString();
+            }else{
+                r = Math.floor(r);
+                color += String.fromCharCode(r + 87);
+            }
+        }
+        document.documentElement.style.setProperty('--color', '#'+color);
+    }
+}
 
 function openFilter(f, event){
     event.stopPropagation();
@@ -36,7 +55,7 @@ function get_artisti(f, event){
     datalist.innerHTML = "";
     const search = document.getElementById("search");
     url = "http://10.0.0.9/~quintaib10/Jukebox/artisti/get_artisti.php?artista=";
-    //if(window.location.toString().includes("localhost")) url = "http://localhost/jukebox/artisti/get_artisti.php?artista=";
+    if(window.location.toString().includes("localhost")) url = "http://localhost/jukebox/artisti/get_artisti.php?artista=";
     fetch(url+search.value)
     .then(response => response.json())
     .then(data => {
@@ -63,7 +82,7 @@ function get_album(f, event){
     datalist.innerHTML = "";
     const search = document.getElementById("search");
     url = "http://10.0.0.9/~quintaib10/Jukebox/album/get_album.php?album=";
-    //if(window.location.toString().includes("localhost")) url = "http://localhost/jukebox/album/get_album.php?album=";
+    if(window.location.toString().includes("localhost")) url = "http://localhost/jukebox/album/get_album.php?album=";
     fetch(url+search.value)
     .then(response => response.json())
     .then(data => {

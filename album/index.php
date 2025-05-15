@@ -5,6 +5,7 @@
         //$art = "Amy Winehouse";
         $selection = false;
             try{
+                //$db = new mysqli("10.0.0.9", "quintaib15", "bcIvr01", "quintaib15_jukebox");
                 $db = new mysqli('localhost', 'php', 'password', 'jukebox');
                 if(isset($_GET['selection']) && isset($_GET['artista']) && !is_null($res = exists($_GET['selection'],$_GET['artista'],$db))){
                   //  if(isset($sel) && isset($art) && !is_null($res = exists($sel,$art,$db))){
@@ -79,6 +80,7 @@
         <title>ALBUM</title>
         <link rel="stylesheet" href="../jukebox.css">
         <link rel="shortcut icon" href="https://www.svgrepo.com/show/268599/music-player-right-arrow.svg" type="image/x-icon">
+        <script src="../script.js"></script>
         <script>
             function openFilter(f, event){
                 event.stopPropagation();

@@ -2,6 +2,7 @@
     header('Content-Type: application/json');
     header("Access-Control-Allow-Origin: *");
     try{
+        //$db = new mysqli("10.0.0.9", "quintaib15", "bcIvr01", "quintaib15_jukebox");
         $db = new mysqli('localhost', 'php', 'password', 'jukebox');
         if(!empty($_GET["album"])) $arr = get_album($db, $_GET['album']);
         else $arr = get_album($db, "%");

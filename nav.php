@@ -1,6 +1,17 @@
 <?php
     session_start();
     if(!isset($path)) header("location: ./");
+    if($path == "index" || $path == "register" || $path == "login") {
+        $links["artisti"] = "./artisti";
+        $links["album"] = "./album";
+        $links["generi"] = "./generi";
+        $links["home"] = "../Jukebox";
+    } else if($path == "album" || $path == "artisti" || $path == "generi") {
+        $links["artisti"] = "../artisti";
+        $links["album"] = "../album";
+        $links["generi"] = "../generi";
+        $links["home"] = "../";
+    }
 ?>
 
 <div class="nav">
@@ -24,5 +35,8 @@
     </div>
 </div>
 <div id="links-menu">
-    
+    <a href="<?= $links["home"] ?>">Home</a>
+    <a href="<?= $links["artisti"] ?>">Artisti</a>
+    <a href="<?= $links["generi"] ?>">Generi</a>
+    <a href="<?= $links["album"] ?>">Album</a>
 </div>
