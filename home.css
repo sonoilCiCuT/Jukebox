@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'fontos';
-    src: url("http://localhost/lequire/Lequire.otf");
+    src: url("http://10.0.0.9/~quintaib05/lequire/Lequire.otf");
 }
 
 .home-grid{
@@ -14,7 +14,6 @@
 .home-grid>a{
     margin:0;
     padding: 0;
-
 }
 
 .home-grid>a>img{

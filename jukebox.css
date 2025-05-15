@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
 @font-face {
     font-family: "docallisme";
-    src: url("http://localhost/jukebox/docallisme/docallismeonstreet.otf") format("truetype");
+    src: url("http://10.0.0.9/~quintaib10/Jukebox/docallisme/docallismeonstreet.otf") format("truetype");
 }
 
 :root{
@@ -355,6 +355,15 @@ body{
     display: inline-block;
 }
 
+#links-menu{
+    display: grid;
+    position: fixed;
+    width: 25vw;
+    height: calc(100vh - var(--nav-height));
+    background-color: black;
+    left: -50vw;
+    top: var(--nav-height);
+}
 
 @media (max-width: 1000px) {
     .album-container,.artista-container{
@@ -389,3 +398,4 @@ body{
         justify-content: space-around;
     }
 }
+

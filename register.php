@@ -5,7 +5,7 @@
         if(str_contains($user,"@")) $email = true;
         $pwd = $_POST["pwd"];
         try{
-            $db = new mysqli("localhost", "php", "password", "jukebox");
+            $db = new mysqli("10.0.0.9", "quintaib_15", "bcIvr01", "quintaib15_jukebox");
             if($email) $res = $db->query("Select username from utente where email like '$user'");
             else $res = $db->query("Select email from utente where username like '$user'");
             if($res->num_rows>0){
@@ -16,34 +16,30 @@
             echo $e->getMessage();
         }
     }
-    
-    if (isset($_POST['nome']) && isset($_POST['cognome']) && isset($_POST['email']) && isset($_POST['user']) && isset($_POST['pwd'])) {
-        $nome = $_POST['nome'];
-        $cognome = $_POST['cognome'];
-        $Email = $_POST['email'];
-        $username = $_POST['user'];
-        $password = $_POST['pwd'];
-        $conn = new mysqli("localhost", "php", "password", "jukebox");
-        if ($conn->connect_error) die("Connessione fallita: " . $conn->connect_error);
-        $query = "SELECT * FROM utente WHERE email = ? OR username = ?";
-        $stmt = $conn->prepare($query);
-        $stmt->bind_param("ss", $Email, $username);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        if ($result->num_rows > 0) echo "Errore: email o username già registrati.";
-        else {
-            $sql= "INSERT INTO utente (nome, cognome, email, password, username) VALUES (?, ?, ?, ?, ?)";
-            $stmt = $conn->prepare($sql);
-            $stmt->bind_param("sssss", $nome, $cognome, $Email, $password, $username);
-            if ($stmt->execute()) {
-                session_start();
-                $_SESSION["username"] = $username;
-                header("location: ./");
-            }
-            else echo "Errore durante la registrazione: " . $stmt->error;
-            $stmt->close();
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $nome = isset($_POST['name']) ? $_POST['name'] : "";
+        $cognome = isset($_POST['cognome']) ? $_POST['cognome'] : "";
+        $username = isset($_POST['user']) ? $_POST['user'] : "";
+        $nome = isset($_POST['email']) ? $_POST['email'] : "";
+        $password = isset($_POST['pwd']) ? $_POST['pwd'] : "";
+        try{
+            $conn = new mysqli("10.0.0.9", "quintaib_15", "bcIvr01", "quintaib15_jukebox");
+        }catch(Exception $ex){
+            echo "Errore di connessione: " . $ex->getMessage();
+            return;
         }
-        $stmt->close();
+        $sql = "INSERT INTO utente (nome,cognome,email,password,username) VALUES (,),";
+        try{
+            $result = $conn->query($sql);
+        }catch(Exception $ex){
+            echo "Errore nella query: " . $ex->getMessage();
+            return;
+        }
+        if ($result && $result->num_rows > 0) {
+            $_SESSION['User'] = $name;
+            header("Location: elenco.php");
+            exit();
+        }
         $conn->close();
     }
 ?>

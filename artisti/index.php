@@ -3,7 +3,7 @@
         $path="album";
         if(isset($_GET['album'])){
             try{
-                $db = new mysqli('localhost', 'php', 'password', 'jukebox');
+                $db = new mysqli("10.0.0.9", "quintaib15", "bcIvr01", "quintaib15_jukebox");
                 //get_all($db);
                 $cond = "album.titolo like '$_GET[album]'";
                 $arr = get_artisti($db, $cond);
@@ -15,7 +15,7 @@
             }
         }else{
             try{
-                $db = new mysqli('localhost', 'php', 'password', 'jukebox');
+                $db = new mysqli("10.0.0.9", "quintaib15", "bcIvr01", "quintaib15_jukebox");
                 //get_all($db);
                 $arr = get_artisti($db, null);
                 //echo json_encode($arr);
@@ -66,52 +66,7 @@
         <title>JUKEBOX</title>
         <link rel="stylesheet" href="../jukebox.css">
         <link rel="shortcut icon" href="https://www.svgrepo.com/show/268599/music-player-right-arrow.svg" type="image/x-icon">
-        <script>
-            function openFilter(f, event){
-                event.stopPropagation();
-                const filter = document.getElementById("filter-menu");
-                if(filter.style.right == "0"){
-                    filter.style.right = "-25%";
-                }else{
-                    filter.style.right = "0";
-                }
-            }
-
-            document.addEventListener("click", function(event) {
-                const filter = document.getElementById("filter-menu");
-                const search = document.getElementById("search");
-                if (!filter.contains(event.target) && !search.contains(event.target)) {
-                    filter.style.right = "-50%";
-                }
-            });
-
-            function get_artisti(f, event){
-                datalist = document.getElementById("datalist");
-                datalist.innerHTML = "";
-                const search = document.getElementById("search");
-                url = "http://192.168.1.1/jukebox/artisti/get_artisti.php?artista=";
-                if(window.location.toString().includes("localhost")) url = "http://localhost/jukebox/artisti/get_artisti.php?artista=";
-                fetch(url+search.value)
-                .then(response => response.json())
-                .then(data => {
-                    console.log(data);
-                    const container = document.querySelector(".artista-container");
-                    container.innerHTML = "";
-                    data.forEach(artista => {
-                        //if(search.value.length > 0) {
-                            opt = document.createElement("option");
-                            opt.value = artista.nome;
-                            datalist.appendChild(opt);
-                        
-                        const a = document.createElement("a");
-                        a.href = "../album/?artista="+artista.nome;
-                        a.className = "artista";
-                        a.innerHTML = `<img src="${artista.url}" alt=""><h2>${artista.nome}</h2>`;
-                        container.appendChild(a);
-                    });
-                });
-            }
-        </script>
+        <script src="../script.js"></script>
     </head>
     <body>
         <?php include_once("../nav.php"); ?>

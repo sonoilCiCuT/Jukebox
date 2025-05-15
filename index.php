@@ -10,6 +10,8 @@
     <link rel="shortcut icon" href="https://www.svgrepo.com/show/268599/music-player-right-arrow.svg" type="image/x-icon">
     <link rel="stylesheet" href="jukebox.css">
     <link rel="stylesheet" href="home.css">
+    <script src="script.js"></script>
+
 </head>
 <body>
     <?php include_once("nav.php"); ?>
