@@ -55,7 +55,7 @@ function get_artisti(f, event){
     datalist.innerHTML = "";
     const search = document.getElementById("search");
     url = "http://10.0.0.9/~quintaib10/Jukebox/artisti/get_artisti.php?artista=";
-    if(window.location.toString().includes("localhost")) url = "http://localhost/jukebox/artisti/get_artisti.php?artista=";
+    //if(window.location.toString().includes("localhost")) url = "http://localhost/jukebox/artisti/get_artisti.php?artista=";
     fetch(url+search.value)
     .then(response => response.json())
     .then(data => {
@@ -82,7 +82,7 @@ function get_album(f, event){
     datalist.innerHTML = "";
     const search = document.getElementById("search");
     url = "http://10.0.0.9/~quintaib10/Jukebox/album/get_album.php?album=";
-    if(window.location.toString().includes("localhost")) url = "http://localhost/jukebox/album/get_album.php?album=";
+    //if(window.location.toString().includes("localhost")) url = "http://localhost/jukebox/album/get_album.php?album=";
     fetch(url+search.value)
     .then(response => response.json())
     .then(data => {

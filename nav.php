@@ -6,11 +6,13 @@
         $links["album"] = "./album";
         $links["generi"] = "./generi";
         $links["home"] = "../Jukebox";
+        $links['slog'] = "./slog.php";
     } else if($path == "album" || $path == "artisti" || $path == "generi") {
         $links["artisti"] = "../artisti";
         $links["album"] = "../album";
         $links["generi"] = "../generi";
         $links["home"] = "../";
+        $links['slog'] = "../slog.php";
     }
 ?>
 
@@ -19,7 +21,7 @@
         <svg id="links" onclick="toggleLinks(this,event)" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 18H10" stroke-width="2" stroke-linecap="round"/><path d="M4 12L16 12" stroke-width="2" stroke-linecap="round"/><path d="M4 6L20 6" stroke-width="2" stroke-linecap="round"/></svg>
     </div>
     <div class="title">
-        <h1>Jukebox</h1>
+        <a href="<?= $links["home"] ?>">Jukebox</a>
     </div>
     <div class="login">
         <?php if($path != "login"):   ?>
@@ -27,7 +29,7 @@
             <?php if(!isset($_SESSION['username'])): ?>                
                 <a href="<?= ($path != "index") ? "../" : "" ?>login.php" class="accedi"><svg width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 21C5 17.134 8.13401 14 12 14C15.866 14 19 17.134 19 21M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
             <?php else: ?>
-                <a class="accedi"><svg width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 21C5 17.134 8.13401 14 12 14C15.866 14 19 17.134 19 21M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                <a href="<?=$links['slog']?>" class="accedi"><svg width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.90002 7.55999C9.21002 3.95999 11.06 2.48999 15.11 2.48999H15.24C19.71 2.48999 21.5 4.27999 21.5 8.74999V15.27C21.5 19.74 19.71 21.53 15.24 21.53H15.11C11.09 21.53 9.24002 20.08 8.91002 16.54" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 12H3.62" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.85 8.6499L2.5 11.9999L5.85 15.3499" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
             <?php endif; ?>
         <?php else: ?>
             <div class="blank"></div>

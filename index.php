@@ -24,7 +24,7 @@
             <img src="https://djlifemag.com/wp-content/uploads/2024/05/hit-me-hard-and-soft-v0-dhnauhkskhvc1.jpeg" alt="">
             <p>Album</p>
         </a>
-        <a href="genere" class="album">
+        <a href="generi" class="album">
             <img src="https://image-cdn-ak.spotifycdn.com/image/ab67618600000194c4d3aa8ba1de39836df29e24" alt="">
             <p>Generi</p>
         </a>

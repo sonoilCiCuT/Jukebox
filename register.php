@@ -6,7 +6,7 @@
         $pwd = $_POST["pwd"];
         try{
             $db = new mysqli("10.0.0.9", "quintaib_15", "bcIvr01", "quintaib15_jukebox");
-            $db = new mysqli("localhost", "php", "password", "jukebox");
+            //$db = new mysqli("localhost", "php", "password", "jukebox");
             if($email) $res = $db->query("Select username from utente where email like '$user'");
             else $res = $db->query("Select email from utente where username like '$user'");
             if($res->num_rows>0){

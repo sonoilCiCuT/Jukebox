@@ -2,14 +2,14 @@
 @font-face {
     font-family: "docallisme";
     src: url("http://10.0.0.9/~quintaib10/Jukebox/docallisme/docallismeonstreet.otf") format("truetype");
-    src: url("http://localhost/Jukebox/docallisme/docallismeonstreet.otf") format("truetype");
+    
 }
 
 :root{
     --background-color: #1a1a1a;
     --text-color: #ffffff;
     --nav-height: 8rem;
-    --color: #5000ff;
+    --color: #fffb00;
 }
 body{
     display: grid;
@@ -110,17 +110,12 @@ body{
 }
 
 #search::placeholder{
-    color: #0062ff;
+    color: var(--color);
 }
 
 #search:hover{
     background-color: rgba(100, 100, 100, 0.5);
     box-shadow: 0 0 20px var(--color);
-    color: var(--text-color);
-}
-
-#search:hover::placeholder{
-    color: var(--text-color);
 }
 
 #filter{
@@ -189,12 +184,12 @@ body{
     stroke: var(--color);
 }
 
-.title>h1{
+.title>a{
     font-family: 'docallisme', sans-serif;
     font-size: 5rem;
     color: var(--color);
     display: inline-block;
-
+    text-decoration: none;
 }
 
 .login{
@@ -339,25 +334,24 @@ body{
 .song-list{
     margin-top: 3vh;
     display: grid;
+    padding: 10px 10px;
     grid-template-columns: 100%;
+    background-color: rgba(128, 128, 128, 0.171);
+    width: max-content;
+    
 }
 
-.song-list>div{
+.song-list>ol{
+    justify-self: center;
+}
+
+.song-list>ol>li{
     border-radius: 1rem;
     font-size: 160%;
     margin: 1vh;
-    width: 50%;
-    padding:3vh 10%;
-    justify-self: center;
+    width: max-content;
+    padding: 3vh 10%;
     font-weight: 600;
-    background-color: #ffffff06;
-    transition: all .15s ease;
-    box-shadow: 0 0 10px #101010;
-}
-
-.song-list>div:hover{
-    background-color: #ffffff1d ;
-    box-shadow: 0 0 20px var(--color);
 }
 
 .song-list>div>span{

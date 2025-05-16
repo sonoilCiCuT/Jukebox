@@ -1,12 +1,11 @@
 <?php
-        header("Access-Control-Allow-Origin: *");
-        $path="artisti";
-        if(isset($_GET['album'])){
+        $path="generi";
+        if(isset($_GET['genere'])){
             try{
                 $db = new mysqli("10.0.0.9", "quintaib15", "bcIvr01", "quintaib15_jukebox");
                 //$db = new mysqli("localhost", "php", "password", "jukebox");
-                $cond = "album.titolo like '$_GET[album]'";
-                $arr = get_artisti($db, $cond);
+                $cond = "genere.nome like '$_GET[genere]'";
+                $arr = get_generi($db, $cond);
                 //echo json_encode($arr);
                 //$res->close();
                 $db->close();
@@ -16,8 +15,7 @@
         }else{
             try{
                 $db = new mysqli("10.0.0.9", "quintaib15", "bcIvr01", "quintaib15_jukebox");
-                //$db = new mysqli("localhost", "php", "password", "jukebox");
-                $arr = get_artisti($db, null);
+                $arr = get_generi($db, null);
                 //echo json_encode($arr);
                 //$res->close();
                 $db->close();
@@ -26,7 +24,7 @@
             }
         }
         function get_all($db){
-            $res = $db->query("select nome,url from artista");
+            $res = $db->query("select nome from genere");
             if($res->num_rows > 0){
                 echo "<table>";
                 echo "<tr><th>Artista</th><th>Titolo</th><th>Anno</th><th>Genere</th></tr>";
@@ -44,15 +42,15 @@
             }
         }
 
-        function get_artisti($db, $cond){
+        function get_generi($db, $cond){
             $ass = [];
             $i = 0;
             //select artista.nome,titolo,genere.nome from artista join artista_album using(artista_id) join album using(album_id) join album_genere using(album_id) join genere using(genere_id);
-            if(is_null($cond)) $q = "select nome,url from artista order by artista.nome";
-            else $q = "select nome,url from artista where $cond  order by artista.nome";            
+            if(is_null($cond)) $q = "select nome from genere order by nome";
+            else $q = "select nome from genere where $cond order by nome";            
             $res = $db->query($q);
             while($row = $res->fetch_assoc()){
-                $ass[$i++]=["nome"=>$row['nome'], "url"=>$row['url']];
+                $ass[$i++]=["nome"=>$row['nome']];
             }
             return $ass;
         }
@@ -80,8 +78,7 @@
         </div-->
         <div class="artista-container">
             <?php foreach($arr as $artisti): ?>
-                <a href="../album/?artista=<?= $artisti['nome'] ?>" class="artista">
-                    <img src="<?= $artisti["url"] ?>" alt="">
+                <a href="../album/?genere=<?= $artisti['nome'] ?>" class="artista">
                     <h2><?= $artisti['nome']; ?></h2>                    
                 </a>
             <?php endforeach; ?>  
