@@ -5,8 +5,7 @@
         if(str_contains($user,"@")) $email = true;
         $pwd = $_POST["pwd"];
         try{
-            $db = new mysqli("10.0.0.9", "quintaib_15", "bcIvr01", "quintaib15_jukebox");
-            //$db = new mysqli("localhost", "php", "password", "jukebox");
+            $db = new mysqli("10.0.0.9", "quintaib15", "bcIvr01", "quintaib15_jukebox");
             if($email) $res = $db->query("Select username from utente where email like '$user'");
             else $res = $db->query("Select email from utente where username like '$user'");
             if($res->num_rows>0){
@@ -17,30 +16,25 @@
             echo $e->getMessage();
         }
     }
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $nome = isset($_POST['name']) ? $_POST['name'] : "";
+    if ($_SERVER["REQUEST_METHOD"] == "POST"){
+        $nome = isset($_POST['nome']) ? $_POST['nome'] : "";
         $cognome = isset($_POST['cognome']) ? $_POST['cognome'] : "";
         $username = isset($_POST['user']) ? $_POST['user'] : "";
-        $nome = isset($_POST['email']) ? $_POST['email'] : "";
+        $email = isset($_POST['email']) ? $_POST['email'] : "";
         $password = isset($_POST['pwd']) ? $_POST['pwd'] : "";
         try{
-            $conn = new mysqli("10.0.0.9", "quintaib_15", "bcIvr01", "quintaib15_jukebox");
-            $db = new mysqli("localhost", "php", "password", "jukebox");
-        }catch(Exception $ex){
-            echo "Errore di connessione: " . $ex->getMessage();
-            return;
-        }
-        $sql = "INSERT INTO utente (nome,cognome,email,password,username) VALUES (,),";
-        try{
+            $conn = new mysqli("10.0.0.9", "quintaib15", "bcIvr01", "quintaib15_jukebox");
+            $sql = "INSERT INTO utente (nome, cognome, email, password, username) VALUES ('$nome','$cognome', '$email', '$password', '$username')";
             $result = $conn->query($sql);
+            if ($result == 1){
+                session_start();
+                $_SESSION['username'] = $email;
+                echo $_SESSION["username"];
+                header("Location: ./");
+            }
         }catch(Exception $ex){
             echo "Errore nella query: " . $ex->getMessage();
             return;
-        }
-        if ($result && $result->num_rows > 0) {
-            $_SESSION['User'] = $name;
-            header("Location: elenco.php");
-            exit();
         }
         $conn->close();
     }

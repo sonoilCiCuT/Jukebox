@@ -105,3 +105,50 @@ function get_album(f, event){
         });
     });
 }
+
+async function addAlbum(but,event){
+    alb = {"album": 0,"artista": 0}
+    alb.album = but.parentNode.getElementsByClassName("album-info")[0].getElementsByTagName("h1")[0].innerHTML;
+    alb.artista = but.parentNode.getElementsByClassName("album-info")[0].getElementsByTagName("a")[0].innerHTML
+    console.log(alb)
+    await fetch("10.0.0.9/~quintaib10/Jukebox/add_album.php?album="+alb.album+"&artista="+alb.artista).then(response => response.text()).then(data => {
+        console.log(data);
+    });
+}
+
+function createCounter(){
+    div=document.getElementsByClassName("quantita");
+    Array.from(div).forEach(function(element){
+        let counter=document.createElement("span");
+        counter.className = "counter";
+        let plus=document.createElement("img");
+        let minus=document.createElement("img");
+        let number=document.createElement("span");
+        number.className = "num";
+        number.textContent="1";
+        minus.src="https://www.svgrepo.com/show/532960/minus.svg"
+        minus.className = "sign";
+        minus.id="minus"
+        plus.src="https://www.svgrepo.com/show/532997/plus-large.svg"
+        plus.className = "sign";
+        plus.id="plus"
+        plus.addEventListener("click", counterAddSub);
+        minus.addEventListener("click", counterAddSub);
+        element.appendChild(minus);
+        element.appendChild(number);
+        element.appendChild(plus);
+    });
+    console.log("ciao");
+}
+
+function counterAddSub(e){
+    let counter=e.target.parentNode;
+    let number=counter.getElementsByClassName("num")[0];
+
+    if(e.target.id=="plus") number.textContent=parseInt(number.textContent)+1;
+    else{
+        if(number.textContent=="1") counter.parentNode.remove();
+        number.textContent=parseInt(number.textContent)-1;
+
+    }
+}

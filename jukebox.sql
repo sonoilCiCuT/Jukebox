@@ -1,3 +1,4 @@
+drop database quintaib15_jukebox;
 create database quintaib15_jukebox;
 use quintaib15_jukebox;
 
@@ -191,7 +192,7 @@ INSERT INTO album (titolo, anno, url) VALUES
 ('Heaven and Hell', 1980, "https://m.media-amazon.com/images/I/71nANQYpdWL._UF1000,1000_QL80_.jpg"),  -- Black Sabbath
 ("Sacred Heart",1985,"https://m.media-amazon.com/images/I/81zwOxhwGlL._UF1000,1000_QL80_.jpg"),
 ("Dream Evil",1987,"https://m.media-amazon.com/images/I/71ogkzJrC+L._UF1000,1000_QL80_.jpg"),
-("Lock Up the Wolves",1990,"https://m.media-amazon.com/images/I/71P-qO4RSjL._UF1000,1000_QL80_.jpg"),
+("Lock Up the Wolves",1990,"https://e.snmc.io/i/600/s/8d0f22d3a39ca24a18fd25fd20434604/1214652/dio-lock-up-the-wolves-Cover-Art.jpg"),
 ("From Heaven to Hell",1992,"https://m.media-amazon.com/images/I/81nd1k14ZsL._UF1000,1000_QL80_.jpg"),
 ("Strange Highways",1993,"https://m.media-amazon.com/images/I/71ks7fF3vmL._UF1000,1000_QL80_.jpg"),
 ("Angry Machines",1996,"https://m.media-amazon.com/images/I/515ZT4HT1EL._UF1000,1000_QL80_.jpg"),
@@ -719,3 +720,50 @@ INSERT INTO album_genere (album_id, genere_id) VALUES
 (36,3), (36, 26), (36, 27), 
 (37,3), (37, 26), (37, 27), 
 (38,3), (38, 26), (38, 27);
+
+
+INSERT INTO tipo (nome) VALUES
+('CD'),
+('Vinile'),
+('Cassetta');
+
+INSERT INTO articolo (prezzo, tipo_id, album_id, disponibilita) VALUES
+(10.99, 1, 1, 5),
+(12.99, 2, 1, 3),
+(8.99, 3, 1, 2),
+(9.99, 1, 2, 4),
+(11.99, 2, 2, 6),
+(7.99, 3, 2, 1),
+(15.99, 1, 3, 5),
+(17.99, 2, 3, 3),
+(13.99, 3, 3, 2),
+(14.99, 1, 4, 4),
+(16.99, 2, 4, 6),
+(12.99, 3, 4, 1),
+(18.99, 1, 5, 5),
+(20.99, 2, 5, 3),
+(16.99, 3, 5, 2);
+
+INSERT INTO playlist(utente_id) VALUES
+(1),
+(2),
+(3),
+(4),
+(5);
+
+INSERT INTO playlist_articolo(playlist_id, album_id, tipo_id) VALUES
+(1, 1, 1),
+(1, 2, 2),
+(1, 3, 3),
+(2, 4, 1),
+(2, 5, 2),
+(2, 6, 3),
+(3, 7, 1),
+(3, 8, 2),
+(3, 9, 3),
+(4, 10, 1),
+(4, 11, 2),
+(4, 12, 3),
+(5, 13, 1),
+(5, 14, 2),
+(5, 15, 3);
