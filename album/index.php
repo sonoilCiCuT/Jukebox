@@ -81,53 +81,6 @@
         <link rel="stylesheet" href="../jukebox.css">
         <link rel="shortcut icon" href="https://www.svgrepo.com/show/268599/music-player-right-arrow.svg" type="image/x-icon">
         <script src="../script.js"></script>
-        <script>
-            function openFilter(f, event){
-                event.stopPropagation();
-                const filter = document.getElementById("filter-menu");
-                if(filter.style.right == "0"){
-                    filter.style.right = "-25%";
-                }else{
-                    filter.style.right = "0";
-                }
-            }
-
-            document.addEventListener("click", function(event) {
-                const filter = document.getElementById("filter-menu");
-                const search = document.getElementById("search");
-                if (!filter.contains(event.target) && !search.contains(event.target)) {
-                    filter.style.right = "-50%";
-                }
-            });
-        function get_album(f, event){
-                datalist = document.getElementById("datalist");
-                datalist.innerHTML = "";
-                const search = document.getElementById("search");
-                url = "http://10.0.0.9/~quintaib10/jukebox/album/get_album.php?album=";
-                if(window.location.toString().includes("localhost")) url = "http://localhost/jukebox/album/get_album.php?album=";
-                fetch(url+search.value)
-                .then(response => response.json())
-                .then(data => {
-                    console.log(data);
-                    const container = document.querySelector(".album-container");
-                    container.innerHTML = "";
-                    data.forEach(album => {
-                        if(search.value.length > 0) {
-                            opt = document.createElement("option");
-                            opt.value = album.titolo;
-                            datalist.appendChild(opt);
-                        }
-                        const a = document.createElement("a");
-                        a.href = "./?selection="+album.titolo+"&artista="+album.artista;
-                        a.className = "album";
-                        a.innerHTML = `<img src="${album.url}" alt=""><h2>${album.titolo}</h2>
-                        <p class="artist">${album.artista}, <span class="anno">${album.anno}</span></p>
-                        <p class="genere">${album.genere}</p>`;
-                        container.appendChild(a);
-                    });
-                });
-            }
-        </script>
     </head>
     <body>
         <?php include_once("../nav.php"); ?>
@@ -146,14 +99,28 @@
             <div class="show-album">
                 <div class="details">
                     <img src="<?= $res['url'] ?>">
-                    <div><h1><?= $res['titolo']; ?></h1><h2><a href="./?artista=<?= $res['nome'] ?>"><?= $res['nome']; ?></a>, <?= $res['anno']; ?></h2></div>
-                </div>    
-                <div class="song-list">
+                    <div class="album-info"><h1><?= $res['titolo']; ?></h1><h2><a href="./?artista=<?= $res['nome'] ?>"><?= $res['nome']; ?></a>, <?= $res['anno']; ?></h2></div>
+                </div>
+                <fieldset class="song-list">
+                    <legend><svg width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" >
+<g clip-path="url(#clip0_429_11112)">
+<circle cx="12" cy="12" r="2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="18" cy="9" r="2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M15.318 3.63135C14.2913 3.22394 13.1718 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.1514 21 19.6464 18.1892 20.6855 14.3669" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M20 9V2L22 4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<defs>
+<clipPath id="clip0_429_11112">
+<rect width="24" height="24" fill="white"/>
+</clipPath>
+</defs>
+</svg></legend>
+                
                     <?php foreach($res['canzoni'] as $can): ?>
-                        <div><span><?= $can['canzone_id'] ?> </span> <?= $can['titolo'] ?></div>
+                        <div> <?= $can['titolo'] ?></div>
                         <?php endforeach; ?>
                     </di>
-                </div>
+                </fieldset>
                 <?php else: ?>
             <div class="album-container">
                 <?php foreach($arr as $album): ?>

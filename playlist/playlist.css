@@ -4,3 +4,7 @@
     grid-template-columns: 80%;
     justify-content: center;
 }
+
+.error{
+    font-size: 200%;
+}
