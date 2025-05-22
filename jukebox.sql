@@ -70,9 +70,15 @@ create table articolo(
 create table playlist(
     playlist_id int auto_increment primary key,
     utente_id int not null,
-    articolo_id int not null,
-    foreign key (utente_id) references utente(utente_id),
-    foreign key (articolo_id) references articolo(album_id)
+    foreign key (utente_id) references utente(utente_id)
+);
+
+create table playlist_articolo(
+    playlist_id int references playlist(playlist_id),
+    album_id int not null,
+    tipo_id int not null,
+    foreign key (album_id,tipo_id) references articolo(album_id,tipo_id),
+    primary key (playlist_id,album_id,tipo_id)
 );
 
 create table acquisti(
@@ -713,13 +719,3 @@ INSERT INTO album_genere (album_id, genere_id) VALUES
 (36,3), (36, 26), (36, 27), 
 (37,3), (37, 26), (37, 27), 
 (38,3), (38, 26), (38, 27);
-
-
-create table secret(
-    secret_id int auto_increment primary key,
-    client_id varchar(255) not null ,
-    client_secret varchar(255) not null
-);
-
-insert into secret(client_id, client_secret) values
-('b5c068cb7f364b55a76682d01da7423b',"2819eae2e82643f19a76d82513fb0c27");
