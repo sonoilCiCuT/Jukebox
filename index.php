@@ -1,49 +1,33 @@
 <?php
-    $path = "playlist";
-    try{
-        $db = new mysqli("localhost","php","password","quintaib15_jukebox");
-        $re = get_playlist($db);
-    }catch(Exception $e){
-        echo $e->getMessage();
-    }
-
-    function get_playlist($db){
-        $r = $db->query("Select * from playlist join playlist_articolo using(playlist_id) join articolo using(album_id, tipo_id) join album using(album_id) join artista_album using(album_id) join artista using(artista_id) join tipo using(tipo_id) where playlist_id = (select playlist_id from utente join playlist using(utente_id) order by playlist_id desc limit 1);");
-        $re = [];
-        $prezzo = 0;
-        while($p = $r->fetch_assoc()){
-            $prezzo += $p['prezzo'];
-            array_push($re,$p);
-        }
-        return $re;
-    }
+    $path = "index";
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Playlist</title>
+    <title>JUKEBOX</title>
     <link rel="shortcut icon" href="https://www.svgrepo.com/show/268599/music-player-right-arrow.svg" type="image/x-icon">
-    <link rel="stylesheet" href="../jukebox.css">
-    <link rel="stylesheet" href="playlist.css">
+    <link rel="stylesheet" href="jukebox.css">
+    <link rel="stylesheet" href="home.css">
+    <script src="script.js"></script>
+
 </head>
-<body>
-    <?php include_once("../nav.php"); ?>
-    <div class="list">
-        <?php if(count($re) > 0): ?>
-            <?php foreach($re as $r): ?>
-                <div class="obj">
-                    <div class="alb">
-                        <img src="<?= $r['src'] ?>">
-                        <p><?= $r['nome'] ?></p>
-                    </div>
-                </div>
-            <?php endforeach; ?>
-        <?php else: ?>
-            <div class="error">Nessun articolo selezionato</div>
-        <?php endif; ?>
+<body onload="setColor()">
+    <?php include_once("nav.php"); ?>
+    <div class="home-grid">
+        <a href="artisti" class="album">
+            <img src="https://image-cdn-ak.spotifycdn.com/image/ab67618600000194282f8e91da4dff9d5bee49a8" alt="">
+            <p>Artisti</p>
+        </a>
+        <a href="album" class="album">
+            <img src="https://djlifemag.com/wp-content/uploads/2024/05/hit-me-hard-and-soft-v0-dhnauhkskhvc1.jpeg" alt="">
+            <p>Album</p>
+        </a>
+        <a href="generi" class="album">
+            <img src="https://image-cdn-ak.spotifycdn.com/image/ab67618600000194c4d3aa8ba1de39836df29e24" alt="">
+            <p>Generi</p>
+        </a>
     </div>
 </body>
 </html>
