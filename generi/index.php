@@ -2,8 +2,8 @@
         $path="generi";
         if(isset($_GET['genere'])){
             try{
-                //$db = new mysqli("10.0.0.9", "quintaib15", "bcIvr01", "quintaib15_jukebox");
-                $db = new mysqli("localhost", "php", "password", "quintaib15_jukebox");
+                $db = new mysqli("10.0.0.9", "quintaib15", "bcIvr01", "quintaib15_jukebox");
+            //$db = new mysqli("localhost", "php", "password", "quintaib15_jukebox");
                 $cond = "genere.nome like '$_GET[genere]'";
                 $arr = get_generi($db, $cond);
                 //echo json_encode($arr);
@@ -14,8 +14,8 @@
             }
         }else{
             try{
-                //$db = new mysqli("10.0.0.9", "quintaib15", "bcIvr01", "quintaib15_jukebox");
-                $db = new mysqli("localhost", "php", "password", "quintaib15_jukebox");
+                $db = new mysqli("10.0.0.9", "quintaib15", "bcIvr01", "quintaib15_jukebox");
+            //$db = new mysqli("localhost", "php", "password", "quintaib15_jukebox");
                 $arr = get_generi($db, null);
                 //echo json_encode($arr);
                 //$res->close();
