@@ -1,7 +1,8 @@
 <?php
     if(isset($_GET["artista"]) && isset($_GET["album"])){
         try{
-            $db = new mysqli("10.0.0.9", "quintaib15", "bcIvr01", "quintaib15_jukebox");
+            //$db = new mysqli("10.0.0.9", "quintaib15", "bcIvr01", "quintaib15_jukebox");
+            $db = new mysqli("localhost", "php", "password", "quintaib15_jukebox");
             $res = exists($_GET["album"],$_GET["artista"],$db);
             if(!is_null($res) && isset($_SESSION["username"])){
                 //$db->query("insert into ")

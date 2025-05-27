@@ -10,11 +10,41 @@
 }
 
 .obj{
-    border: 1px solid white;
-    border-radius: 1rem;
-    padding: 1rem;
+    border: 1px solid black;
+    border-bottom: none;
+    background-color: black;
+    padding: 2rem;
     display: flex;
+    border-radius: 1rem;
+    margin: .5vw 0;
     align-items: center;
+    position: relative;
+}
+
+.obj:first-child{
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+}
+
+.obj:last-child{
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    border-bottom: 1px solid black;
+}
+
+legend{
+    right:0;
+    top:0;
+    position: absolute;
+    border-radius: 50%;
+    width: 8vh;
+    height: 8vh;
+    background-color: black;
+    padding: 2rem;
+}
+legend>img{
+    width: 100%;
+    filter:invert(100%);
 }
 
 .alb{
@@ -35,15 +65,39 @@
 
 .alb>img{
     width: 80%;
+    box-shadow: 0 0 10px #404040;
+}
+
+.areaeconomica{
+    right:0;
+    bottom:0;
+    position: absolute;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    text-align: end;
 }
 
 .prezzo{
     float: right;
+    margin-bottom: 0;
+    font-size: 120%;
+    font-weight: 700;
+}
+
+.disp.red{
+    color:rgba(255, 0, 0, 0.878);
+    font-size: 120%;
+    font-weight: 700;
+}
+
+.disp.yellow{
+    color:rgb(255, 196, 0);
 }
 
 .quantita{
     float: right;
-    margin-right: 1rem;
     align-items: center;
     align-content: center;
     display: flex;

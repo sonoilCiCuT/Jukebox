@@ -1,9 +1,15 @@
 <?php
+    $tipo = [
+        "CD"=>"https://www.svgrepo.com/show/487177/cd.svg",
+        "Vinile"=>"https://www.svgrepo.com/show/246436/vinyl.svg",
+        "Cassetta"=>"https://www.svgrepo.com/show/532675/cassette-tape.svg"
+    ];
     session_start();
     $path = "playlist";
     if(isset($_SESSION["username"])){
         try{
-            $db = new mysqli("10.0.0.9", "quintaib15", "bcIvr01", "quintaib15_jukebox");
+            //$db = new mysqli("10.0.0.9", "quintaib15", "bcIvr01", "quintaib15_jukebox");
+            $db = new mysqli("localhost", "php", "password", "quintaib15_jukebox");
             $re = get_playlist($db);
         }catch(Exception $e){
             echo $e->getMessage();
@@ -39,7 +45,8 @@
         <div class="list">
             <?php if(count($re) > 0): ?>
                 <?php foreach($re as $r): ?>
-                    <div class="obj">
+                    <fieldset class="obj">
+                        <legend><img src="<?= $tipo[$r['tipo']] ?>" alt=""></legend>
                         <div class="alb">
                             <img src="<?= $r['al_url'] ?>">
                             <div>
@@ -49,10 +56,10 @@
                         </div>
                         <div class="areaeconomica">
                             <p class="prezzo" id="a"><?= $r['prezzo'] ?>€</p>
-                            <p class="disp" id="b">Disponibilità: <?= $r['disponibilita'] ?></p>
+                            <p class="disp <?php if($r['disponibilita'] < 5) echo ($r["disponibilita"] < 2) ? "red" : "yellow";?>" id="b">Disponibilità: <?= $r['disponibilita']?></p>
                             <div class="quantita" id="c"></div>
                         </div>
-                    </div>
+                </fieldset>
                 <?php endforeach; ?>
             <?php else: ?>
                 <div class="error">Nessun articolo selezionato</div>

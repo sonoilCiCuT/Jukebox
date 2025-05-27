@@ -2,8 +2,8 @@
     header('Content-Type: application/json');
     header("Access-Control-Allow-Origin: *");
     try{
-        $db = new mysqli("10.0.0.9", "quintaib15", "bcIvr01", "quintaib15_jukebox");
-        //$db = new mysqli("localhost", "php", "password", "jukebox");
+        //$db = new mysqli("10.0.0.9", "quintaib15", "bcIvr01", "quintaib15_jukebox");
+        $db = new mysqli("localhost", "php", "password", "quintaib15_jukebox");
         if(!empty($_GET["artista"])) $arr = get_artisti($db, $_GET['artista']);
         else $arr = get_artisti($db, "%");
         $db->close();

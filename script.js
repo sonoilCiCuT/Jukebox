@@ -138,17 +138,19 @@ function createCounter(){
         element.appendChild(number);
         element.appendChild(plus);
     });
-    console.log("ciao");
 }
 
 function counterAddSub(e){
     let counter=e.target.parentNode;
     let number=counter.getElementsByClassName("num")[0];
+    let i = e.target.parentNode.parentNode.getElementsByTagName("*")[1].textContent.split(": ")[1];
 
-    if(e.target.id=="plus") number.textContent=parseInt(number.textContent)+1;
+    if(e.target.id=="plus"){
+        n = parseInt(number.textContent)+1;
+        if(n <= i) number.textContent=n;
+    }
     else{
-        if(number.textContent=="1") counter.parentNode.remove();
-        number.textContent=parseInt(number.textContent)-1;
-
+        n = parseInt(number.textContent)-1
+        if(n > 0) number.textContent=n;
     }
 }

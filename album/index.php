@@ -5,8 +5,8 @@
         //$art = "Amy Winehouse";
         $selection = false;
             try{
-                $db = new mysqli("10.0.0.9", "quintaib15", "bcIvr01", "quintaib15_jukebox");
-                //$db = new mysqli('localhost', 'php', 'password', 'jukebox');
+                //$db = new mysqli("10.0.0.9", "quintaib15", "bcIvr01", "quintaib15_jukebox");
+            $db = new mysqli("localhost", "php", "password", "quintaib15_jukebox");
                 if(isset($_GET['selection']) && isset($_GET['artista']) && !is_null($res = exists($_GET['selection'],$_GET['artista'],$db))){
                   //  if(isset($sel) && isset($art) && !is_null($res = exists($sel,$art,$db))){
                     $selection = true;

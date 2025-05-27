@@ -1,7 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
 @font-face {
     font-family: "docallisme";
-    src: url("http://10.0.0.9/~quintaib10/Jukebox/docallisme/docallismeonstreet.otf") format("truetype");
+    /*src: url("http://10.0.0.9/~quintaib10/Jukebox/docallisme/docallismeonstreet.otf") format("truetype");*/
+    src: url("http://localhost/Jukebox/docallisme/docallismeonstreet.otf") format("truetype");
     
 }
 
