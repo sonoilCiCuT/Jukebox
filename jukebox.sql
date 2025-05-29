@@ -742,7 +742,102 @@ INSERT INTO articolo (prezzo, tipo_id, album_id, disponibilita) VALUES
 (12.99, 3, 4, 1),
 (18.99, 1, 5, 5),
 (20.99, 2, 5, 3),
-(16.99, 3, 5, 2);
+(16.99, 3, 5, 2),
+-- Articoli per album 16-20
+(12.99, 1, 16, 7),  -- CD Thriller
+(24.99, 2, 16, 4),  -- Vinile Thriller
+(9.99, 3, 16, 3),   -- Cassetta Thriller
+
+(10.99, 1, 17, 5),  -- CD Like a Virgin
+(22.99, 2, 17, 2),  -- Vinile Like a Virgin
+(8.99, 3, 17, 1),   -- Cassetta Like a Virgin
+
+(14.99, 1, 18, 6),  -- CD After Hours
+(26.99, 2, 18, 3),  -- Vinile After Hours
+(11.99, 3, 18, 2),  -- Cassetta After Hours
+
+(13.99, 1, 19, 4),  -- CD When We All Fall Asleep
+(25.99, 2, 19, 2),  -- Vinile When We All Fall Asleep
+(10.99, 3, 19, 1),  -- Cassetta When We All Fall Asleep
+
+(11.99, 1, 20, 5),  -- CD Marshall Mathers LP
+(23.99, 2, 20, 3),  -- Vinile Marshall Mathers LP
+(9.99, 3, 20, 2),   -- Cassetta Marshall Mathers LP
+
+-- Articoli per album 21-25
+(15.99, 1, 21, 4),  -- CD Currents
+(27.99, 2, 21, 2),  -- Vinile Currents
+(12.99, 3, 21, 1),  -- Cassetta Currents
+
+(14.99, 1, 22, 6),  -- CD Rumours
+(28.99, 2, 22, 3),  -- Vinile Rumours
+(11.99, 3, 22, 2),  -- Cassetta Rumours
+
+(16.99, 1, 23, 5),  -- CD Are You Experienced
+(29.99, 2, 23, 2),  -- Vinile Are You Experienced
+(13.99, 3, 23, 1),  -- Cassetta Are You Experienced
+
+(12.99, 1, 24, 4),  -- CD I Never Loved a Man
+(24.99, 2, 24, 2),  -- Vinile I Never Loved a Man
+(9.99, 3, 24, 1),   -- Cassetta I Never Loved a Man
+
+(17.99, 1, 25, 3),  -- CD Blonde
+(30.99, 2, 25, 1),  -- Vinile Blonde
+(14.99, 3, 25, 1),  -- Cassetta Blonde
+
+-- Articoli per album 26-30 (Dio e altri)
+(18.99, 1, 26, 5),  -- CD Holy Diver
+(31.99, 2, 26, 3),  -- Vinile Holy Diver
+(15.99, 3, 26, 2),  -- Cassetta Holy Diver
+
+(19.99, 1, 27, 4),  -- CD The Last in Line
+(32.99, 2, 27, 2),  -- Vinile The Last in Line
+(16.99, 3, 27, 1),  -- Cassetta The Last in Line
+
+(20.99, 1, 28, 3),  -- CD Rainbow Rising
+(33.99, 2, 28, 1),  -- Vinile Rainbow Rising
+(17.99, 3, 28, 1),  -- Cassetta Rainbow Rising
+
+(21.99, 1, 29, 4),  -- CD Heaven and Hell
+(34.99, 2, 29, 2),  -- Vinile Heaven and Hell
+(18.99, 3, 29, 1),  -- Cassetta Heaven and Hell
+
+(22.99, 1, 30, 3),  -- CD Sacred Heart
+(35.99, 2, 30, 1),  -- Vinile Sacred Heart
+(19.99, 3, 30, 1),  -- Cassetta Sacred Heart
+
+-- Articoli per album 31-38 (restanti album di Dio)
+(20.99, 1, 31, 2),  -- CD Dream Evil
+(33.99, 2, 31, 1),  -- Vinile Dream Evil
+(17.99, 3, 31, 1),  -- Cassetta Dream Evil
+
+(19.99, 1, 32, 3),  -- CD Lock Up the Wolves
+(32.99, 2, 32, 1),  -- Vinile Lock Up the Wolves
+(16.99, 3, 32, 1),  -- Cassetta Lock Up the Wolves
+
+(18.99, 1, 33, 2),  -- CD From Heaven to Hell
+(31.99, 2, 33, 1),  -- Vinile From Heaven to Hell
+(15.99, 3, 33, 1),  -- Cassetta From Heaven to Hell
+
+(21.99, 1, 34, 3),  -- CD Strange Highways
+(34.99, 2, 34, 1),  -- Vinile Strange Highways
+(18.99, 3, 34, 1),  -- Cassetta Strange Highways
+
+(22.99, 1, 35, 2),  -- CD Angry Machines
+(35.99, 2, 35, 1),  -- Vinile Angry Machines
+(19.99, 3, 35, 1),  -- Cassetta Angry Machines
+
+(23.99, 1, 36, 3),  -- CD Magica
+(36.99, 2, 36, 1),  -- Vinile Magica
+(20.99, 3, 36, 1),  -- Cassetta Magica
+
+(24.99, 1, 37, 2),  -- CD Killing the Dragon
+(37.99, 2, 37, 1),  -- Vinile Killing the Dragon
+(21.99, 3, 37, 1),  -- Cassetta Killing the Dragon
+
+(25.99, 1, 38, 3),  -- CD Master of the Moon
+(38.99, 2, 38, 1),  -- Vinile Master of the Moon
+(22.99, 3, 38, 1);  -- Cassetta Master of the Moon
 
 INSERT INTO playlist(utente_id) VALUES
 (1),
