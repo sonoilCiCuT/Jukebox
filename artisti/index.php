@@ -4,7 +4,7 @@
         if(isset($_GET['album'])){
             try{
                 $db = new mysqli("10.0.0.9", "quintaib15", "bcIvr01", "quintaib15_jukebox");
-            //$db = new mysqli("localhost", "php", "password", "quintaib15_jukebox");
+                //$db = new mysqli('localhost', 'php', 'password', 'quintaib15_jukebox');
                 $cond = "album.titolo like '$_GET[album]'";
                 $arr = get_artisti($db, $cond);
                 //echo json_encode($arr);
@@ -16,7 +16,7 @@
         }else{
             try{
                 $db = new mysqli("10.0.0.9", "quintaib15", "bcIvr01", "quintaib15_jukebox");
-            //$db = new mysqli("localhost", "php", "password", "quintaib15_jukebox");
+                //$db = new mysqli('localhost', 'php', 'password', 'quintaib15_jukebox');
                 $arr = get_artisti($db, null);
                 //echo json_encode($arr);
                 //$res->close();

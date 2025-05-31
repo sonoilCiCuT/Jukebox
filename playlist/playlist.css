@@ -6,45 +6,33 @@
 }
 
 .error{
+    width: max-content;
+    justify-self: center;
     font-size: 200%;
+    text-align: center;
+    background-color: #df0000   ;
+    text-decoration: none;
+    color:black;
+    padding: 1rem;
+    border-radius: 1rem;
+    transition: all 0.1s ease;
+}
+
+.error:hover{
+    box-shadow: 0px 0px 20px #c30000;
 }
 
 .obj{
-    border: 1px solid black;
-    border-bottom: none;
-    background-color: black;
-    padding: 2rem;
-    display: flex;
+    /* border: 1px solid white; */
     border-radius: 1rem;
-    margin: .5vw 0;
+    padding: 1rem;
+    display: flex;
     align-items: center;
-    position: relative;
-}
-
-.obj:first-child{
-    border-top-left-radius: 1rem;
-    border-top-right-radius: 1rem;
-}
-
-.obj:last-child{
-    border-bottom-left-radius: 1rem;
-    border-bottom-right-radius: 1rem;
-    border-bottom: 1px solid black;
-}
-
-legend{
-    right:0;
-    top:0;
-    position: absolute;
-    border-radius: 50%;
-    width: 8vh;
-    height: 8vh;
-    background-color: black;
-    padding: 2rem;
-}
-legend>img{
-    width: 100%;
-    filter:invert(100%);
+    justify-content: space-between;
+    height: fit-content;
+    margin: 1.5rem;
+    background-color: rgba(60, 60, 60, 0.98 );
+    box-shadow: 4px 4px 8px 0px var(--color);
 }
 
 .alb{
@@ -57,6 +45,7 @@ legend>img{
 
 .alb>div>h3{
     font-size: 200%;
+    width: max-content;
 }
 
 .alb>div>p{
@@ -65,42 +54,22 @@ legend>img{
 
 .alb>img{
     width: 80%;
-    box-shadow: 0 0 10px #404040;
-}
-
-.areaeconomica{
-    right:0;
-    bottom:0;
-    position: absolute;
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: end;
-    text-align: end;
+    border-radius: 1rem;
 }
 
 .prezzo{
     float: right;
-    margin-bottom: 0;
-    font-size: 120%;
-    font-weight: 700;
-}
-
-.disp.red{
-    color:rgba(255, 0, 0, 0.878);
-    font-size: 120%;
-    font-weight: 700;
-}
-
-.disp.yellow{
-    color:rgb(255, 196, 0);
+    font-size: 200%;
+    grid-area: a;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 0;
 }
 
 .quantita{
-    float: right;
     align-items: center;
-    align-content: center;
     display: flex;
+    grid-area: c;
 }
 
 .quantita>*{
@@ -129,3 +98,140 @@ legend>img{
     padding: .5rem;
     margin-inline: .5rem;
 }
+
+.disp{
+    grid-area: b;
+    font-size: 150%;
+    margin: 0;
+    display: flex;
+    align-items: flex-end;
+}
+
+.areaeconomica{
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas: 
+        ". a"
+        ". . "
+        "b c";
+    margin-inline: 2rem;
+}
+.subtitle{
+    font-size: 200%;
+    font-weight: 900;
+    margin: 0 5rem 3rem;
+}
+
+.acquista{
+    font-size: 3rem;
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    margin: 0 1.5rem;
+}
+
+.acquista>div{
+    border-radius: 1rem;
+    color: black;
+    background-color: var(--color);
+    width: max-content;
+    padding: 1rem;
+    justify-self: end;
+    user-select: none;
+}
+
+.acquista>div:hover{
+    cursor: pointer;
+    box-shadow: 0 0 20px var(--color);
+}
+
+.sign{
+    transition: all 0.1s ease;
+}
+
+.sign:hover{
+    background-color: rgba(255, 255, 255, 0.774);
+    border-color: rgba(255, 255, 255, 0.774);
+}
+
+:root{
+    --popup-height: 50vh;
+    --popup-width: 50vw;
+}
+
+#popup,#acquisto{
+    position:fixed;
+    display: none;
+    grid-template-columns: 40% 40%;
+    width: var(--popup-width);
+    height: var(--popup-height);
+    top: calc(50% - var(--popup-height) / 2);
+    left: calc(50% - var(--popup-width) / 2);
+    background-color: rgba(0, 0, 0, 0.904);
+    border-radius: 2rem;
+    justify-content: space-around;
+    padding:2rem;
+    align-items: center;
+    
+}
+
+#acquisto{
+    width: calc(var(--popup-width) - 10%);
+    height: calc(var(--popup-height) - 10%);
+    top: calc(55% - var(--popup-height) / 2);
+    left: calc(55% - var(--popup-width) / 2);
+}
+
+#popup>p,#acquisto>p{
+    grid-column: span 2;
+    text-align: center;
+    font-size: 300%;
+    margin:0;
+}
+
+#popup>p>span{
+    font-weight: 900;
+    color: var(--color);    
+}
+
+#popup>button{
+    width: 70%;
+    height: 50%;
+    font-size: 200%;
+    justify-self: center;
+    border:none;
+    border-radius: 1rem;
+    background-color: #c30000;
+    transition: all 0.1s ease;
+}
+
+#popup>button:last-child{
+    background-color: #00c300;
+}
+
+#popup>button:hover,#acquisto>button:hover{
+    box-shadow: 0px 0px 20px #c30000;
+}
+
+#popup>button:last-child:hover,#acquisto>a:hover{
+    box-shadow: 0px 0px 20px #00c300;
+}
+
+#acquisto>a{
+    width: 35%;
+    grid-column:span 2;
+    height: 50%;
+    font-size: 200%;
+    justify-self: center;
+    border:none;
+    border-radius: 1rem;
+    background-color: #00c300;
+    transition: all 0.1s ease;
+    align-content: center;
+    color:black;
+    text-decoration: none;
+    text-align: center;
+}
+

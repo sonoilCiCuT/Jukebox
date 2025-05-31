@@ -37,7 +37,7 @@ h3{
 
 .details>button:hover{
     cursor: pointer;
-    box-shadow: 0 0 25px var(--color);
+    box-shadow: 0 0 20px var(--color);
 }
 
 .details>*{
@@ -130,4 +130,36 @@ h3{
 .song-list>div>span{
     width:2.5vw;
     display: inline-block;
+}
+
+#tipo{
+    font-size: 150%;
+    width: 50%;
+    justify-self: center;
+    border-radius: 1rem;
+    margin-top: 5%;
+    background-color: #101010;
+    border: none;
+    color: white;
+    padding: 1rem;
+    appearance: none;
+}
+
+#tipo>option{
+    text-align: center;
+}
+
+#tipo:hover{
+    cursor: pointer;
+    box-shadow: 0 0 10px var(--color);
+}
+
+button.no{
+    background-color: red;
+}
+
+button.no:hover{
+    background-color: red;
+    box-shadow: none;
+    cursor:initial;
 }

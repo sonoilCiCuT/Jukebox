@@ -6,7 +6,7 @@
         $pwd = $_POST["pwd"];
         try{
             $db = new mysqli("10.0.0.9", "quintaib15", "bcIvr01", "quintaib15_jukebox");
-            //$db = new mysqli("localhost", "php", "password", "quintaib15_jukebox");
+            //$db = new mysqli('localhost', 'php', 'password', 'quintaib15_jukebox');
             if($email) $res = $db->query("Select username from utente where email like '$user'");
             else $res = $db->query("Select email from utente where username like '$user'");
             if($res->num_rows>0){
@@ -24,13 +24,14 @@
         $email = isset($_POST['email']) ? $_POST['email'] : "";
         $password = isset($_POST['pwd']) ? $_POST['pwd'] : "";
         try{
-            //$conn  = new mysqli("10.0.0.9", "quintaib15", "bcIvr01", "quintaib15_jukebox");
-            $conn = new mysqli("localhost", "php", "password", "quintaib15_jukebox");
+            //$db = new mysqli("10.0.0.9", "quintaib15", "bcIvr01", "quintaib15_jukebox");
+            $db = new mysqli('localhost', 'php', 'password', 'jukebox');
             $sql = "INSERT INTO utente (nome, cognome, email, password, username) VALUES ('$nome','$cognome', '$email', '$password', '$username')";
             $result = $conn->query($sql);
             if ($result == 1){
                 session_start();
                 $_SESSION['username'] = $email;
+                $db->query("INSERT INTO playlist(utente_id) VALUES((SELECT utente_id FROM utente WHERE email = '$_SESSION[username]'));");
                 echo $_SESSION["username"];
                 header("Location: ./");
             }

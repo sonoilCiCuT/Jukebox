@@ -1,4 +1,4 @@
-    <?php
+<?php
         $path="album";
         header("Access-Control-Allow-Origin: *");
         //$sel = "Back to Black";
@@ -6,11 +6,12 @@
         $selection = false;
             try{
                 $db = new mysqli("10.0.0.9", "quintaib15", "bcIvr01", "quintaib15_jukebox");
-            //$db = new mysqli("localhost", "php", "password", "quintaib15_jukebox");
+                //$db = new mysqli('localhost', 'php', 'password', 'quintaib15_jukebox');
                 if(isset($_GET['selection']) && isset($_GET['artista']) && !is_null($res = exists($_GET['selection'],$_GET['artista'],$db))){
                   //  if(isset($sel) && isset($art) && !is_null($res = exists($sel,$art,$db))){
                     $selection = true;
                     $res["canzoni"] = [];
+                    $tipi = $db->query("select tipo.nome,tipo_id from tipo join articolo using(tipo_id) where album_id = $res[album_id]");
                     $canzoni = $db->query("select * from canzone where album_id = $res[album_id]");
                     while($c = $canzoni->fetch_assoc()) array_push($res["canzoni"],$c);
                 }else{
@@ -18,7 +19,7 @@
                     $cond = "";
                     if(isset($_GET['artista'])) $cond .= "artista.nome like '%$_GET[artista]%'";
                     if(isset($_GET['anno'])) $cond .= (strlen($cond) > 0 ? " and " : "")."album.anno = $_GET[anno]%";
-                    if(isset($_GET['genere'])) $cond .= (strlen($cond) > 0 ? " and " : "")."genere.nome like '%$_GET[genere]%'";
+                    if(isset($_GET['genere'])) $cond .= (strlen($cond) > 0 ? " and " : "")."genere.nome like '$_GET[genere]'";
                     if(isset($_GET['album'])) $cond .= (strlen($cond) > 0 ? " and " : "")."album.titolo like '%$_GET[album]%'";
                     $arr = get_albums($db, (strlen($cond) > 0 ? $cond : null));
                 }
@@ -58,15 +59,34 @@
             $ass = [];
             $i = 0;
             //select artista.nome,titolo,genere.nome from artista join artista_album using(artista_id) join album using(album_id) join album_genere using(album_id) join genere using(genere_id);
-            if(is_null($cond)) $q = "select album_id,nome,titolo,anno,album.url from artista join artista_album using(artista_id) join album using(album_id) order by artista.nome";
-            else $q = "select album_id,nome,titolo,anno,album.url from artista join artista_album using(artista_id) join album using(album_id) where $cond order by artista.nome";            
+            if(is_null($cond)) 
+                $q = "SELECT album.album_id, artista.nome, titolo, anno, album.url, GROUP_CONCAT(genere.nome SEPARATOR ', ') as genere 
+                      FROM artista 
+                      JOIN artista_album USING(artista_id) 
+                      JOIN album USING(album_id) 
+                      JOIN album_genere USING(album_id) 
+                      JOIN genere USING(genere_id) 
+                      GROUP BY album.album_id 
+                      ORDER BY artista.nome";
+            else 
+                $q = "SELECT album.album_id, artista.nome, titolo, anno, album.url, GROUP_CONCAT(genere.nome SEPARATOR ', ') as genere 
+                      FROM artista 
+                      JOIN artista_album USING(artista_id) 
+                      JOIN album USING(album_id) 
+                      JOIN album_genere USING(album_id) 
+                      JOIN genere USING(genere_id) 
+                      WHERE $cond 
+                      GROUP BY album.album_id 
+                      ORDER BY artista.nome";            
             $res = $db->query($q);
             while($row = $res->fetch_assoc()){
-                $r = $db->query("Select genere.nome from album natural join album_genere join genere using(genere_id) where album_id = ".$row['album_id']);
-                $str = [];
-                $j = 0;
-                while($rr = $r->fetch_assoc()) $str[$j++] = $rr["nome"];
-                $ass[$i++]=["album"=>$row['titolo'], "artista"=>$row['nome'], "anno"=>$row['anno'], "genere"=>implode(", ",$str), "url"=>$row['url']];
+                $ass[$i++]=[
+                    "album"=>$row['titolo'], 
+                    "artista"=>$row['nome'], 
+                    "anno"=>$row['anno'], 
+                    "genere"=>$row['genere'], 
+                    "url"=>$row['url']
+                ];
             }
             return $ass;
         }
@@ -81,7 +101,7 @@
         <link rel="stylesheet" href="../jukebox.css">
         <link rel="stylesheet" href="album.css">
         <link rel="shortcut icon" href="https://www.svgrepo.com/show/268599/music-player-right-arrow.svg" type="image/x-icon">
-        <script src="../script.js"></script>
+        <script src="../script.js"></script> 
     </head>
     <body>
         <?php include_once("../nav.php"); ?>
@@ -101,7 +121,16 @@
                 <div class="details">
                     <img src="<?= $res['url'] ?>">
                     <div class="album-info"><h1><?= $res['titolo']; ?></h1><h2><a href="./?artista=<?= $res['nome'] ?>"><?= $res['nome']; ?></a>, <?= $res['anno']; ?></h2></div>
-                    <button onclick="addAlbum(this,event)">Aggiungi alla playlist</button>
+                    <?php if($tipi->num_rows > 0): ?>
+                        <select name="tipo" id="tipo">
+                            <?php foreach($tipi as $t): ?>
+                                <option value="<?= $t["tipo_id"] ?>"><?= $t["nome"] ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                        <button onclick="addAlbum(this,event)">Aggiungi alla playlist</button>
+                    <?php else: ?>
+                        <button class="no">Articolo non disponibile</button>
+                    <?php endif; ?>
                 </div>
                 <fieldset class="song-list">
                     <legend>

@@ -78,6 +78,7 @@ create table playlist_articolo(
     playlist_id int references playlist(playlist_id),
     album_id int not null,
     tipo_id int not null,
+    quantita int not null,
     foreign key (album_id,tipo_id) references articolo(album_id,tipo_id),
     primary key (playlist_id,album_id,tipo_id)
 );
@@ -128,7 +129,26 @@ INSERT INTO artista (nome,url) VALUES
 ('Frank Ocean', '../foto/ab67616100005174ee3123e593174208f9754fab.jpeg'),
 ('Dio', '../foto/ab67616100005174555c8199ba80168cfeafdfbc.jpeg'),
 ('Rainbow', '../foto/402ab270e0754615887a261047f7db4596c1ffda.jpeg'),
-('Black Sabbath', '../foto/ab676161000051744870cd833ebe1092601820c3.jpeg');
+('Black Sabbath', '../foto/ab676161000051744870cd833ebe1092601820c3.jpeg'),
+('Lazza', '../foto/lazza.jpg'),
+('Tony Effe', '../foto/tony.jpg'),
+('Caparezza', '../foto/capa.jpg'),
+("Beethoven", '../foto/beethoven.jpg'),
+('Mozart', '../foto/mozart.jpg'),
+('Bach', '../foto/bach.jpg'),
+('Vivaldi', '../foto/vivaldi.jpg'),
+('Chopin', '../foto/chopin.jpg'),
+('Tchaikovsky', '../foto/tchaikovsky.jpg'),
+('Debussy', '../foto/debussy.jpg'),
+('Stravinsky', '../foto/stravinsky.jpg'),
+('Salmo', '../foto/salmo.jpg'),
+('Noyz Narcos', '../foto/noyz.jpg'),
+('Nitro', '../foto/nitro.jpg'),
+('Jack The Smoker', '../foto/jack the smoke.jpg'),
+('Nas', '../foto/nas.jpg'),
+('Mobb Deep', '../foto/mobb deep.jpg'),
+('nayt', '../foto/nayt.jpg'),
+('Club Dogo', '../foto/clubdogo.png');
 
 INSERT INTO genere (nome) VALUES
 ('Rock'),
@@ -158,7 +178,19 @@ INSERT INTO genere (nome) VALUES
 ('Alternative R&B'),
 ('Heavy Metal'),
 ('Power Metal'),
-('Doom Metal');
+('Doom Metal'),
+("classical"),
+('Baroque'),
+('Romantic'),
+('Modern Classical'),
+('Opera'),
+('Symphonic Rock'),
+('Progressive Metal'),
+('Trap'),
+('Boom Bap'),
+('Drill'),
+('Rap Sperimentale'),
+('Indie');
 
 INSERT INTO album (titolo, anno, url) VALUES
 ('Abbey Road', 1969, "https://m.media-amazon.com/images/I/81sBKBIcwvL.jpg"),
@@ -198,7 +230,20 @@ INSERT INTO album (titolo, anno, url) VALUES
 ("Angry Machines",1996,"https://m.media-amazon.com/images/I/515ZT4HT1EL._UF1000,1000_QL80_.jpg"),
 ("Magica",2000,"https://m.media-amazon.com/images/I/714ECzGiy2L._UF1000,1000_QL80_.jpg"),
 ("Killing the Dragon",2002,"https://upload.wikimedia.org/wikipedia/en/c/cd/DioKillingTheDragon.jpg"), -- Dio
-("Master of the Moon",2004,"https://m.media-amazon.com/images/I/71QDTMuuFOL._UF894,1000_QL80_.jpg"); -- Dio
+("Master of the Moon",2004,"https://m.media-amazon.com/images/I/71QDTMuuFOL._UF894,1000_QL80_.jpg"),
+("Re Mida", 2019, "https://m.media-amazon.com/images/I/91LHRcgC7NL.jpg"),
+("Untouchable", 2021, "https://m.media-amazon.com/images/I/A1dIEmkQLWS._UF1000,1000_QL80_DpWeblab_.jpg"),
+("The Island Chainsaw Massacre", 2011, "https://cdn-images.dzcdn.net/images/cover/9bb12796c7806578ae794f8072b3fa61/0x1900-000000-80-0-0.jpg"),
+("Virus", 2022, "https://m.media-amazon.com/images/I/51AbIKs4IQL._UXNaN_FMjpg_QL85_.jpg"),
+("Sedicinoni", 2024, "https://m.media-amazon.com/images/I/910wsZgfMOL._UF1000,1000_QL80_.jpg"),
+("Danger", 2012, "https://m.media-amazon.com/images/I/71ZArZOLvkL._UF1000,1000_QL80_.jpg"),
+("Suicidol", 2015, "https://m.media-amazon.com/images/I/517cGyy-veL._UF1000,1000_QL80_.jpg"),
+("Raptus Vol.3", 2019, "https://store.sonymusic.it/cdn/shop/files/13460270_2007-mlib_1500x1500_300dpi_RGB_100Q.jpg?v=1737639614&width=1024"),
+("Raptus 2", 2017, "https://store.sonymusic.it/cdn/shop/files/13501124_2007-mlib_1500x1500_300dpi_RGB_100Q.jpg?crop=center&height=600&v=1737641250&width=600"),
+("MI Fist", 2004, "https://m.media-amazon.com/images/I/61baO9E09bL._UF1000,1000_QL80_.jpg"),
+("Verità Supposte", 2003, "https://m.media-amazon.com/images/I/81Q6gndBGZL._UF1000,1000_QL80_.jpg"),
+("Illmatic", 1994, "https://m.media-amazon.com/images/I/81Fw-VI17eL._UF1000,1000_QL80_.jpg"),
+("The Infamous", 1994, "https://m.media-amazon.com/images/I/91xDlj--xjL.jpg");
 
 INSERT INTO canzone(album_id, titolo, canzone_id) VALUES
 (12,"Rehab",1),
@@ -681,6 +726,7 @@ INSERT INTO artista_album (artista_id, album_id) VALUES
 (26,37),
 (26,38);
 
+
 INSERT INTO album_genere (album_id, genere_id) VALUES
 (1, 1), (1, 4),    -- Abbey Road: Rock, Pop
 (2, 2), (2, 1),    -- Dark Side: Prog Rock, Rock
@@ -729,6 +775,7 @@ INSERT INTO tipo (nome) VALUES
 
 INSERT INTO articolo (prezzo, tipo_id, album_id, disponibilita) VALUES
 (10.99, 1, 1, 5),
+(39.99,2,12,12),
 (12.99, 2, 1, 3),
 (8.99, 3, 1, 2),
 (9.99, 1, 2, 4),
@@ -845,20 +892,3 @@ INSERT INTO playlist(utente_id) VALUES
 (3),
 (4),
 (5);
-
-INSERT INTO playlist_articolo(playlist_id, album_id, tipo_id) VALUES
-(1, 1, 1),
-(1, 2, 2),
-(1, 3, 3),
-(2, 4, 1),
-(2, 5, 2),
-(2, 6, 3),
-(3, 7, 1),
-(3, 8, 2),
-(3, 9, 3),
-(4, 10, 1),
-(4, 11, 2),
-(4, 12, 3),
-(5, 13, 1),
-(5, 14, 2),
-(5, 15, 3);

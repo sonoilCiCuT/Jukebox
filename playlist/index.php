@@ -1,28 +1,27 @@
 <?php
-    $tipo = [
-        "CD"=>"https://www.svgrepo.com/show/487177/cd.svg",
-        "Vinile"=>"https://www.svgrepo.com/show/246436/vinyl.svg",
-        "Cassetta"=>"https://www.svgrepo.com/show/532675/cassette-tape.svg"
-    ];
     session_start();
+    $importo = 0;
+    //header("Content-type: application/json");
     $path = "playlist";
     if(isset($_SESSION["username"])){
         try{
             $db = new mysqli("10.0.0.9", "quintaib15", "bcIvr01", "quintaib15_jukebox");
-            //$db = new mysqli("localhost", "php", "password", "quintaib15_jukebox");
+            //$db = new mysqli('localhost', 'php', 'password', 'quintaib15_jukebox');
             $re = get_playlist($db);
+            foreach($re as $r) $importo += $r["prezzo"];
         }catch(Exception $e){
             echo $e->getMessage();
         }
     }
     function get_playlist($db){
-        $r = $db->query("Select prezzo,disponibilita,titolo,album.url as al_url,anno,artista.nome as artista,artista.url as ar_url,tipo.nome as tipo from playlist join playlist_articolo using(playlist_id) join articolo using(album_id, tipo_id) join album using(album_id) join artista_album using(album_id) join artista using(artista_id) join tipo using(tipo_id) where playlist_id = (select playlist_id from utente join playlist using(utente_id) where email = '$_SESSION[username]' order by playlist_id desc limit 1);");
+        $r = $db->query("Select prezzo,disponibilita,titolo,album.url as al_url,anno,artista.nome as artista,artista.url as ar_url,tipo.nome as tipo, quantita from playlist join playlist_articolo using(playlist_id) join articolo using(album_id, tipo_id) join album using(album_id) join artista_album using(album_id) join artista using(artista_id) join tipo using(tipo_id) where playlist_id = (select playlist_id from utente join playlist using(utente_id) where email = '$_SESSION[username]' order by playlist_id desc limit 1);");
         $re = [];
-        $importo = 0;
+        //$quantita=[];
         while($p = $r->fetch_assoc()){
-            $importo += $p['prezzo'];
             array_push($re,$p);
+            //array_push($quantita, $p["quantita"]);
         }
+        //echo json_encode($quantita);
         return $re;
     }
 ?>
@@ -41,12 +40,11 @@
 <body onload="createCounter()">
     <?php include_once("../nav.php"); ?>
     <?php if(isset($_SESSION['username'])): ?>
-        <h2>La tua playlist</h2>
+        <div class="subtitle">La tua playlist</div >
         <div class="list">
             <?php if(count($re) > 0): ?>
                 <?php foreach($re as $r): ?>
-                    <fieldset class="obj">
-                        <legend><img src="<?= $tipo[$r['tipo']] ?>" alt=""></legend>
+                    <div class="obj" tabindex="0">
                         <div class="alb">
                             <img src="<?= $r['al_url'] ?>">
                             <div>
@@ -56,19 +54,31 @@
                         </div>
                         <div class="areaeconomica">
                             <p class="prezzo" id="a"><?= $r['prezzo'] ?>€</p>
-                            <p class="disp <?php if($r['disponibilita'] < 5) echo ($r["disponibilita"] < 2) ? "red" : "yellow";?>" id="b">Disponibilità: <?= $r['disponibilita']?></p>
+                            <p class="disp" <?php if($r["disponibilita"] < 5 && $r["disponibilita"] > 1) echo "style='color:gold'"; elseif($r["disponibilita"] < 2) echo "style='color:#c30000';" ?> id="b">Disponibilità: <?= $r['disponibilita'] ?></p>
                             <div class="quantita" id="c"></div>
                         </div>
-                </fieldset>
+                    </div>
                 <?php endforeach; ?>
+                <div class="acquista"><span>Totale: <?= $importo ?>€</span><div onclick="acquista()" tabindex="0">Acquisisci</div></div>
             <?php else: ?>
-                <div class="error">Nessun articolo selezionato</div>
+                <div class="error"> Nessun articolo selezionato</div>
             <?php endif; ?>
         </div>
     <?php else: ?>
         <div class="list">
-            <div class="error">Accedi per visualizzare il tuo carrello</div>
+            <a href="../login.php" class="error">Accedi per visualizzare il tuo carrello</a>
         </div>
     <?php endif; ?>
+    <div id="popup">
+        <p>Sei sicuro di voler confermare l'ordine di 
+            <span><?= $importo ?>€</span>?
+        </p>
+        <button onclick="noacquista(this)">Annulla</button>
+        <button onclick="conferma()">Conferma</button>
+    </div>
+    <div id="acquisto">
+        <p>Acquisto effettuato!</p>
+        <a href="../">Continua</a>
+    </div>
 </body>
 </html>

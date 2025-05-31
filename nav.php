@@ -2,19 +2,24 @@
     session_start();
     if(!isset($path)) header("location: ./");
     if($path == "index" || $path == "register" || $path == "login") {
-        $links["artista"] = "./artisti";
-        $links["playlist"]  = "./playlist";
-        $links["album"] = "./album";
-        $links["genere"] = "./generi";
-        $links["home"] = "../Jukebox";
-        $links['slog'] = "./slog.php";
-    } else if($path == "album" || $path == "artista" || $path == "genere" || $path == "playlist") {
-        $links["artista"] = "../artisti";
-        $links["playlist"]  = "../playlist";
-        $links["album"] = "../album";
-        $links["genere"] = "../generi";
-        $links["home"] = "../";
-        $links['slog'] = "../slog.php";
+        $links = [
+            "artista" => "./artisti",
+            "playlist"  => "./playlist",
+            "album" => "./album",
+            "genere" => "./generi",
+            "home" => "./",
+            'slog' => "./slog.php",
+            
+        ];
+    } else if($path == "album" || $path == "artisti" || $path == "generi" || $path == "playlist") {
+        $links = [
+            "artista" => "../artisti",
+            "playlist"  => "../playlist",
+            "album" => "../album",
+            "genere" => "../generi",
+            "home" => "../",
+            'slog' => "../slog.php",
+        ];
     }
 ?>
 
@@ -41,6 +46,6 @@
 <div id="links-menu">
     <a href="<?= $links["home"] ?>">Home</a>
     <a href="<?= $links["artista"] ?>">Artisti</a>
-    <a href="<?= $links["genere "] ?>">Generi</a>
+    <a href="<?= $links["genere"] ?>">Generi</a>
     <a href="<?= $links["album"] ?>">Album</a>
 </div>
